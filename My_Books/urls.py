@@ -1,9 +1,11 @@
-from django.urls import path
-from books import views
+from django.contrib import admin
+from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
-    path('about me/', views.about_me),
-    path('my hobby/', views.my_hobby),
-    path('Time/', views.Time),
-    path('random/', views.random)
+    path('admin/', admin.site.urls),
+    path('', include('books.urls'))
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

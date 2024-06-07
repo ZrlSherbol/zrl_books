@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 import datetime
 from random import randint
+from books.models import books
 
 def about_me(request):
     if request.method == 'GET':
@@ -20,3 +21,25 @@ def Time(request):
 def random(request):
     if request.method == 'GET':
         return HttpResponse(f"Рандомное чилсо: {randint(1, 1000)}")
+
+def books_list_view(request):
+    if request.method == 'GET':
+        query = books.objects.filter().order_by('-id')
+        return render(
+            request,
+            template_name='blog/book_list.html',
+            context={
+                'books': query
+            }
+        )
+
+def books_detail_view(request, id):
+    if request.method == 'GET':
+        book_id = get_object_or_404(books, id=id)
+        return render(
+            request,
+            template_name='blog/book_detail.html',
+            context={
+                'book': book_id
+            }
+        )
