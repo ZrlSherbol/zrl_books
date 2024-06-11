@@ -43,3 +43,18 @@ def books_detail_view(request, id):
                 'book': book_id
             }
         )
+
+def all_books(request):
+    if request.method == 'GET':
+        books = books.objects.filter().order_by('-id')
+        return render(request, template_name='products/all_products.html',
+                      context={'books': books})
+
+
+def for_book_view(request):
+    if request.method == 'GET':
+        book = books.objects.filter(tags__name='Еда').order_by('-id')
+        return render(request, template_name='products/for_eat_view.html',
+                      context={
+                          'book': book
+                      })

@@ -24,3 +24,30 @@ class books(models.Model):
     class Meta:
         verbose_name = 'Книги'
         verbose_name_plural = 'Книга'
+
+
+class ReviewBooks(models.Model):
+    book = models.ForeignKey(books, on_delete=models.CASCADE,
+                                 related_name='review_books')
+    text = models.TextField()
+    mark = models.IntegerField(default=5)
+
+    def __str__(self):
+        return f'{self.book} - {self.mark}'
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class Book(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    price = models.PositiveIntegerField(default=100)
+    tags = models.ManyToManyField(Tag)
+
+    def __str__(self):
+        return f'{self.title} - {self.price}'
