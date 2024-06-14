@@ -26,11 +26,3 @@ class books(models.Model):
         verbose_name_plural = 'Книга'
 
 
-# class ReviewBooks(models.Model):
-#     book = models.ForeignKey(books, on_delete=models.CASCADE,
-#                                  related_name='review_books')
-#     text = models.TextField()
-#     mark = models.IntegerField(default=5)
-#
-#     def __str__(self):
-#         return f'{self.book} - {self.mark}'
