@@ -4,14 +4,14 @@ from . import views
 urlpatterns = [
     path('about me/', views.about_me),
     path('my hobby/', views.my_hobby),
-
-
     path('Time/', views.Time),
     path('random/', views.random),
 
-    path('books/<int:id>/delete/', views.drop_book_view),
-    path('books/<int:id>/update/', views.edit_book_view),
+    path('BooksList/', views.BooksListView.as_view()),
+    path('BooksDetail/', views.BooksDetailView.as_view()),
 
-    path('books/', views.books_list_view),
-    path('books/<int:id>', views.books_detail_view),
+    path('EditBook/', views.EditBookView.as_view()),
+    path('DeleteBook/', views.DeleteBookView.as_view()),
+    path('CreateBooks/', views.CreateBookView.as_view()),
+
 ]
