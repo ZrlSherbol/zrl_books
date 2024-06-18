@@ -141,3 +141,17 @@ class CreateBookView(generic.CreateView):
     def form_valid(self, form):
         print(form.cleaned_data)
         return super(CreateBookView, self).form_valid(form=form)
+
+
+class SearchListView(generic.ListView):
+    template_name = "blog/book_list.html"
+    context_object_name = 'books'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return books.objects.filter(name__icontains=self.request.GET.get('q')).order_by('-id')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['q'] = self.request.GET.get('q')
+        return context

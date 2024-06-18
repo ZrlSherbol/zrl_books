@@ -14,4 +14,6 @@ urlpatterns = [
     path('DeleteBook/', views.DeleteBookView.as_view()),
     path('CreateBooks/', views.CreateBookView.as_view()),
 
+    path('Search/', views.SearchListView.as_view()),
+
 ]
