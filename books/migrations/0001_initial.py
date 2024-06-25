@@ -7,25 +7,62 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='books',
+            name="books",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='напишите название книги')),
-                ('ganre', models.CharField(choices=[('Фэнтези', 'Фэнтези'), ('Боевик', 'Боевик'), ('Детектив', 'Детектив'), ('Драма', 'Драма')], max_length=100, verbose_name='выберите жанр книги')),
-                ('price', models.CharField(max_length=100, verbose_name='напишите стоимость кинги')),
-                ('image', models.ImageField(upload_to='Book/', verbose_name='загрузите фото книги')),
-                ('date_of_creation', models.DateField(verbose_name='установите дату создания книги')),
-                ('about_book', models.TextField(verbose_name='опишите книгу')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        max_length=100, verbose_name="напишите название книги"
+                    ),
+                ),
+                (
+                    "ganre",
+                    models.CharField(
+                        choices=[
+                            ("Фэнтези", "Фэнтези"),
+                            ("Боевик", "Боевик"),
+                            ("Детектив", "Детектив"),
+                            ("Драма", "Драма"),
+                        ],
+                        max_length=100,
+                        verbose_name="выберите жанр книги",
+                    ),
+                ),
+                (
+                    "price",
+                    models.CharField(
+                        max_length=100, verbose_name="напишите стоимость кинги"
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        upload_to="Book/", verbose_name="загрузите фото книги"
+                    ),
+                ),
+                (
+                    "date_of_creation",
+                    models.DateField(verbose_name="установите дату создания книги"),
+                ),
+                ("about_book", models.TextField(verbose_name="опишите книгу")),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'verbose_name': 'Книги',
-                'verbose_name_plural': 'Книга',
+                "verbose_name": "Книги",
+                "verbose_name_plural": "Книга",
             },
         ),
     ]
